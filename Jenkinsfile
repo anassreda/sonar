@@ -4,15 +4,14 @@ pipeline {
 stage('SonarQube Analysis') {
     steps {
         withSonarQubeEnv('SonarQubeServer') {
-            script {
-                def scannerHome = tool 'SonarScanner4'
-                sh """
-                    ${scannerHome}/bin/sonar-scanner \
-                    -Dsonar.projectKey=DevWeb-Clients \
-                    -Dsonar.projectName=DevWeb-Clients \
-                    -Dsonar.sources=. \
-                    -Dsonar.branch.name=${env.BRANCH_NAME}
-                """
+            withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                script {
+                    def scannerHome = tool 'SonarScanner4'
+                    sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.login=$SONAR_TOKEN
+                    """
+                }
             }
         }
     }
