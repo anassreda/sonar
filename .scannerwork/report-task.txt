@@ -2,5 +2,5 @@ projectKey=DevWeb-Clients
 serverUrl=http://localhost:9000
 serverVersion=25.10.0.114319
 dashboardUrl=http://localhost:9000/dashboard?id=DevWeb-Clients
-ceTaskId=d8fc8c76-e9e1-4a98-bebd-c23aa55d548a
-ceTaskUrl=http://localhost:9000/api/ce/task?id=d8fc8c76-e9e1-4a98-bebd-c23aa55d548a
+ceTaskId=a2263341-2ba4-4c6a-a62e-6262c51bb918
+ceTaskUrl=http://localhost:9000/api/ce/task?id=a2263341-2ba4-4c6a-a62e-6262c51bb918
