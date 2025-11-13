@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail DevWeb</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Portail de gestion des clients</h1>
+        <nav>
+            <ul class="menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#clients-section">Clients</a></li>
+                <li><a href="#a-propos">À propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="card">
+            <h2>Bienvenue</h2>
+            <p>
+                Ce portail simplifié permet d’administrer quelques informations clients.
+                Les données sont stockées dans un fichier JSON via un module PHP très basique.
+            </p>
+        </section>
+
+        <section id="clients-section" class="card">
+            <div class="section-header">
+                <h2>Clients</h2>
+                <button id="openCreateModal" class="btn btn-primary">+ Nouveau client</button>
+            </div>
+            <table id="clientsTable">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="empty-row">
+                        <td colspan="4">Chargement des clients...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="a-propos" class="card">
+            <h2>À propos</h2>
+            <p>
+                Prototype réalisé par l’équipe DevWeb. Il met en évidence de simples interactions front/back et des points d’amélioration qualité.
+            </p>
+        </section>
+    </main>
+
+    <div id="clientModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h3 id="modalTitle">Nouveau client</h3>
+            <form id="clientForm">
+                <input type="hidden" name="id" id="clientId">
+                <div class="form-group">
+                    <label for="clientName">Nom</label>
+                    <input type="text" id="clientName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientEmail">Email</label>
+                    <input type="email" id="clientEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientPhone">Téléphone</label>
+                    <input type="tel" id="clientPhone" name="phone">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary" id="cancelModal">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Supprimer le client ?</h3>
+            <p>Cette action est définitive.</p>
+            <div class="form-actions">
+                <button class="btn btn-danger" id="confirmDelete">Supprimer</button>
+                <button class="btn btn-secondary" id="cancelDelete">Annuler</button>
+            </div>
+        </div>
+    </div>
+
+    <template id="clientRowTemplate">
+        <tr>
+            <td class="client-name"></td>
+            <td class="client-email"></td>
+            <td class="client-phone"></td>
+            <td>
+                <button class="btn btn-small btn-outline edit-btn">Modifier</button>
+                <button class="btn btn-small btn-outline danger delete-btn">Supprimer</button>
+            </td>
+        </tr>
+    </template>
+
+    <footer class="footer">
+        <small>© DevWeb 2025 - Portail clients</small>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
