@@ -1,11 +1,14 @@
 pipeline {
     agent any
 
+    tools {
+        sonarQubeScanner 'SonarScanner'
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', 
-                    url: 'https://github.com/anassreda/sonar.git'
+                git url: 'https://github.com/anassreda/sonar.git', branch: 'main'
             }
         }
 
