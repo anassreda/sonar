@@ -1,11 +1,14 @@
 pipeline {
     agent any
 
-    stages {
+    tools {
+        sonarQubeScanner 'SonarScanner'
+    }
 
+    stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/anassreda/sonar.git'
+                git url: 'https://github.com/anassreda/sonar.git', branch: 'main'
             }
         }
 
@@ -19,7 +22,7 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                timeout(time: 1, unit: 'MINUTES') {
+                timeout(time: 2, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
             }
